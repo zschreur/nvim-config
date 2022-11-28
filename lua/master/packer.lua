@@ -17,4 +17,7 @@ return require('packer').startup(function(use)
    -- git plugins
    use 'tpope/vim-fugitive'
    use 'tpope/vim-rhubarb'
+
+   -- lsp
+   use 'neovim/nvim-lspconfig'
 end)
