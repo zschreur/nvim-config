@@ -55,6 +55,9 @@ return packer.startup(function(use)
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
 
+  -- vim nerdfont
+  use 'ryanoasis/vim-devicons'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
