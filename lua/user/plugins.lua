@@ -47,6 +47,14 @@ return packer.startup(function(use)
   use 'EdenEast/nightfox.nvim'
   use 'kaicataldo/material.vim'
 
+  -- git
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+
+  -- airline
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
