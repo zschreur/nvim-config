@@ -1,1 +1,1 @@
-vim.g.airline_theme = 'material'
+vim.g.airline_theme = 'minimalist'

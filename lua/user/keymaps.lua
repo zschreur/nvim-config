@@ -23,6 +23,7 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 vim.keymap.set('n', '<leader>e', ':Lex 30<cr>', opts)
+vim.keymap.set('n', '<leader>t', ':sp term://zsh<cr>', opts)
 
 -- Resize with arrows
 vim.keymap.set("n", "<M-Up>", ":resize +2<CR>", opts)

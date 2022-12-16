@@ -1,5 +1,4 @@
 local fn = vim.fn
-
 -- Automatically install packer
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -12,7 +11,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path,
   }
   print 'Installing packer close and reopen Neovim...'
-  vim.cmd [[packadd packer.nvim]]
+  vim.cmd[[packadd packer.nvim]]
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -63,11 +62,24 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-buffer' -- buffer completions
   use 'hrsh7th/cmp-path' -- path completions
   use 'hrsh7th/cmp-cmdline' -- nippet completions
+  use 'hrsh7th/cmp-nvim-lsp' -- lsp completions
+  use 'hrsh7th/cmp-nvim-lua' -- lua completions
 
   -- snippets
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- snippet engine
   use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
+
+  -- lsp
+  use 'neovim/nvim-lspconfig'
+
+  -- syntax highlighting
+  use {
+     'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+  }
+  use "p00f/nvim-ts-rainbow"
+  use "nvim-treesitter/playground"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
