@@ -1,44 +1,61 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require("plugins")` from your init.vim
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+-- Use a protected call so we don"t error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+    return
+end
 
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+-- Have packer use a popup window
+packer.init {
+    display = {
+        open_fn = function()
+            return require "packer.util".float { border = "rounded" }
+        end,
+    },
+}
 
-	use { 'rose-pine/neovim', as = 'rose-pine' }
+return packer.startup(function(use)
+    -- Packer can manage itself
+    use "wbthomason/packer.nvim"
 
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use {
+        "nvim-telescope/telescope.nvim", tag = "0.1.0",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
 
-	use 'mbbill/undotree'
-	use 'tpope/vim-fugitive'
+    use { "rose-pine/neovim", as = "rose-pine" }
+    use "folke/tokyonight.nvim"
 
-	-- LSP
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		requires = {
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lua'},
+    use "itchyny/lightline.vim"
 
-			-- Snippets
-			{'L3MON4D3/LuaSnip'},
-			{'rafamadriz/friendly-snippets'},
-		}
-	}
+    use "mbbill/undotree"
+    use "tpope/vim-fugitive"
+
+    use "editorconfig/editorconfig-vim"
+
+    -- vim nerdfont
+    use "ryanoasis/vim-devicons"
+
+    -- snippets
+    use "saadparwaiz1/cmp_luasnip"
+    use "L3MON4D3/LuaSnip" -- snippet engine
+    use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+    -- cmp
+    use "hrsh7th/nvim-cmp" -- completion plugin
+    use "hrsh7th/cmp-buffer" -- buffer completions
+    use "hrsh7th/cmp-path" -- path completions
+    use "hrsh7th/cmp-cmdline" -- nippet completions
+    use "hrsh7th/cmp-nvim-lsp" -- lsp completions
+    use "hrsh7th/cmp-nvim-lua" -- lua completions
+
+    -- lsp
+    use "neovim/nvim-lspconfig"
+
 end)

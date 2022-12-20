@@ -1,62 +1,61 @@
-local lsp = require'lsp-zero'
-
-lsp.preset'recommended'
-
-lsp.ensure_installed{
-	'tsserver',
-	'eslint',
-	'sumneko_lua',
-	'rust_analyzer',
-	'clangd'
-}
-
-local cmp = require'cmp'
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings{
-	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-	['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-	['<C-y>'] = cmp.mapping.confirm({ select = true }),
-	["<C-Space>"] = cmp.mapping.complete(),
-}
-
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
-})
-
-lsp.set_preferences({
-	suggest_lsp_servers = false,
-	-- TODO: Switch over to nerd font icons
-	-- sign_icons = {}
-})
-
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 })
 
-lsp.on_attach(function(client, bufnr)
-	local opts = {buffer = bufnr, remap = false}
+local on_attach = function(client, bufnr)
+    local bufopts = { buffer = bufnr, remap = false }
 
-	if client.name == "eslint" then
-		vim.cmd.LspStop('eslint')
-		return
-	end
+    if client.name == "eslint" then
+        vim.cmd.LspStop("eslint")
+        return
+    end
 
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-	vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-	vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-	vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-end)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, bufopts)
+    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, bufopts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, bufopts)
+    vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, bufopts)
+    vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+end
 
-lsp.setup()
-
+require "lspconfig".clangd.setup {
+    on_attach = on_attach
+}
+require "lspconfig".eslint.setup {
+    on_attach = on_attach
+}
+require "lspconfig".tsserver.setup {
+    on_attach = on_attach
+}
+require "lspconfig".rust_analyzer.setup {
+    on_attach = on_attach
+}
+require "lspconfig".sumneko_lua.setup {
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { "vim" },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            }
+        }
+    }
+}
