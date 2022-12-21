@@ -2,13 +2,8 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_ --[[client--]], bufnr)
     local bufopts = { buffer = bufnr, remap = false }
-
-    if client.name == "eslint" then
-        vim.cmd.LspStop("eslint")
-        return
-    end
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)

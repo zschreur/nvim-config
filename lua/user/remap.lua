@@ -32,3 +32,10 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set('n', 'Q', '<nop>')
+
+-- Resize with arrows
+vim.keymap.set("n", "<M-Up>", ":resize +2<CR>", opts)
+vim.keymap.set("n", "<M-Down>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<M-Left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<M-Right>", ":vertical resize +2<CR>", opts)
+
