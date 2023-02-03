@@ -1,11 +1,12 @@
 vim.diagnostic.config({
-	virtual_text = false,
+    virtual_text = false,
 })
 
-local on_attach = function(_ --[[client--]], bufnr)
+local on_attach = function(client, bufnr)
     local bufopts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, bufopts)
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, bufopts)
@@ -15,8 +16,18 @@ local on_attach = function(_ --[[client--]], bufnr)
     vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
+    vim.keymap.set("n", "<leader>f", function()
+        -- Skip tsserver auto format
+        if client.name ~= "tsserver" then
+            vim.lsp.buf.format()
+        end
+    end, bufopts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+
+    -- highligh on cursor hold
+    vim.cmd("autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()")
+    vim.cmd("autocmd! CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
+    vim.cmd("autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()")
 end
 
 require "lspconfig".clangd.setup {

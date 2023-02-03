@@ -6,56 +6,67 @@ vim.cmd [[packadd packer.nvim]]
 -- Use a protected call so we don"t error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-    return
+   return
 end
 
 -- Have packer use a popup window
 packer.init {
-    display = {
-        open_fn = function()
-            return require "packer.util".float { border = "rounded" }
-        end,
-    },
+   display = {
+      open_fn = function()
+         return require "packer.util".float { border = "rounded" }
+      end,
+   },
 }
 
 return packer.startup(function(use)
-    -- Packer can manage itself
-    use "wbthomason/packer.nvim"
+   -- Packer can manage itself
+   use "wbthomason/packer.nvim"
 
-    use {
-        "nvim-telescope/telescope.nvim", tag = "0.1.0",
-        requires = { { "nvim-lua/plenary.nvim" } }
-    }
+   use {
+      "nvim-telescope/telescope.nvim", tag = "0.1.0",
+      requires = { { "nvim-lua/plenary.nvim" } }
+   }
 
-    use { "rose-pine/neovim", as = "rose-pine" }
-    use "folke/tokyonight.nvim"
+   use { "rose-pine/neovim", as = "rose-pine" }
+   use "folke/tokyonight.nvim"
+   use "EdenEast/nightfox.nvim"
 
-    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
-    use "itchyny/lightline.vim"
+   use "nvim-lualine/lualine.nvim"
 
-    use "mbbill/undotree"
-    use "tpope/vim-fugitive"
+   use {
+      "kdheepak/tabline.nvim",
+      requires = { { 'hoob3rt/lualine.nvim', opt = true }, { 'kyazdani42/nvim-web-devicons', opt = true } }
+   }
 
-    use "editorconfig/editorconfig-vim"
+   use "mbbill/undotree"
+   use "tpope/vim-fugitive"
 
-    -- vim nerdfont
-    use "ryanoasis/vim-devicons"
+   use "editorconfig/editorconfig-vim"
 
-    -- snippets
-    use "saadparwaiz1/cmp_luasnip"
-    use "L3MON4D3/LuaSnip" -- snippet engine
-    use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+   -- vim nerdfont
+   use "ryanoasis/vim-devicons"
 
-    -- cmp
-    use "hrsh7th/nvim-cmp" -- completion plugin
-    use "hrsh7th/cmp-buffer" -- buffer completions
-    use "hrsh7th/cmp-path" -- path completions
-    use "hrsh7th/cmp-cmdline" -- nippet completions
-    use "hrsh7th/cmp-nvim-lsp" -- lsp completions
-    use "hrsh7th/cmp-nvim-lua" -- lua completions
+   -- snippets
+   use "saadparwaiz1/cmp_luasnip"
+   use "L3MON4D3/LuaSnip" -- snippet engine
+   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    -- lsp
-    use "neovim/nvim-lspconfig"
+   -- cmp
+   use "hrsh7th/nvim-cmp" -- completion plugin
+   use "hrsh7th/cmp-buffer" -- buffer completions
+   use "hrsh7th/cmp-path" -- path completions
+   use "hrsh7th/cmp-cmdline" -- nippet completions
+   use "hrsh7th/cmp-nvim-lsp" -- lsp completions
+   use "hrsh7th/cmp-nvim-lua" -- lua completions
 
+   -- lsp
+   use "neovim/nvim-lspconfig"
+
+   -- DAP
+   use 'mfussenegger/nvim-dap'
+
+   -- tmux + vim navigation
+   use 'christoomey/vim-tmux-navigator'
 end)

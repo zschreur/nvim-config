@@ -24,10 +24,10 @@ local options = {
     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 
     expandtab = true, -- convert tabs to spaces
-    shiftwidth = 4, -- the number of spaces inserted for each indentation
-    softtabstop = 4,
-    tabstop = 4, -- insert 2 spaces for a tab
-    cursorline = false, -- highlight the current line
+    shiftwidth = 3, -- the number of spaces inserted for each indentation
+    softtabstop = 3,
+    tabstop = 3, -- insert 2 spaces for a tab
+    cursorline = true, -- highlight the current line
     number = true, -- set numbered lines
     relativenumber = true, -- set relative numbered lines
     numberwidth = 4, -- set number column width to 4

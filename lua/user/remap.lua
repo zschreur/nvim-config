@@ -8,11 +8,7 @@ local opts = { silent = true }
 --   term_mode = "t",
 --   command_mode = "c",
 
-
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
-
--- Press jk fast to enter
-vim.keymap.set("i", "jk", "<ESC>", opts)
 
 -- Keeps cursor in middle of page while doing page jumping
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -24,7 +20,7 @@ vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Search terms stay in the middle
 vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- next greatest remap ever : asbjornHaland
 -- copy to system clipboard with leader y

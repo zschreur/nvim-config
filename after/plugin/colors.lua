@@ -1,5 +1,7 @@
+local defaultColor = "carbonfox"
+
 function ColorMyPencils(color)
-    color = color or "rose-pine"
+    color = color or defaultColor
 
     vim.cmd.colorscheme(color)
 
