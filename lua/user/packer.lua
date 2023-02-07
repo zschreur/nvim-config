@@ -35,11 +35,6 @@ return packer.startup(function(use)
 
    use "nvim-lualine/lualine.nvim"
 
-   use {
-      "kdheepak/tabline.nvim",
-      requires = { { 'hoob3rt/lualine.nvim', opt = true }, { 'kyazdani42/nvim-web-devicons', opt = true } }
-   }
-
    use "mbbill/undotree"
    use "tpope/vim-fugitive"
 
