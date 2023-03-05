@@ -15,12 +15,11 @@ dap.configurations.cpp = {
       end,
       cwd = '${workspaceFolder}',
       stopOnEntry = false,
-      args = function()
-         return vim.fn.input('Command line arguments: ', '')
-      end,
+      args = "-- --gtest_filter='TestVolumePoints.*'",
    },
 }
 
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
+require('dapui').setup();
