@@ -31,6 +31,7 @@ return packer.startup(function(use)
    use "folke/tokyonight.nvim"
    use "EdenEast/nightfox.nvim"
    use "sainnhe/edge"
+   use { "catppuccin/nvim", as = "catppuccin" }
 
    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
@@ -71,5 +72,8 @@ return packer.startup(function(use)
    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
    -- tmux + vim navigation
-   use 'christoomey/vim-tmux-navigator'
+   -- use 'christoomey/vim-tmux-navigator'
+
+   -- CoPilot
+   -- use "github/copilot.vim"
 end)
