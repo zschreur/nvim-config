@@ -18,8 +18,14 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("n", "<leader>f", function()
         -- Skip tsserver auto format
-        if client.name ~= "tsserver" then
-            vim.lsp.buf.format()
+        if client.name ~= "tsserver" and client.name ~= "eslint" then
+            vim.lsp.buf.format({
+               insertSpaces = true,
+               insertFinalNewline = true,
+               trimFinalNewlines = true
+            })
+        elseif client.name == "eslint" then
+           vim.cmd("EslintFixAll");
         end
     end, bufopts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
@@ -31,7 +37,8 @@ local on_attach = function(client, bufnr)
 end
 
 require "lspconfig".clangd.setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    cmd = { "clangd", "--clang-tidy" }
 }
 require "lspconfig".eslint.setup {
     on_attach = on_attach

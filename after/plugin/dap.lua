@@ -5,6 +5,15 @@ dap.adapters.lldb = {
    name = 'lldb'
 }
 
+function GetGTestArgs()
+   local filter = vim.fn.input('--gtest_filter=');
+   if string.len(filter) > 0 then
+      local args = { '--gtest_filter=' .. filter }
+      return args
+   end
+   return {}
+end
+
 dap.configurations.cpp = {
    {
       name = 'Launch',
@@ -15,11 +24,13 @@ dap.configurations.cpp = {
       end,
       cwd = '${workspaceFolder}',
       stopOnEntry = false,
-      args = "-- --gtest_filter='TestVolumePoints.*'",
+      args = GetGTestArgs,
    },
 }
 
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
-require('dapui').setup();
+local dapui = require('dapui');
+dapui.setup()
+vim.keymap.set('n', '<leader>dd', dapui.toggle)

@@ -1,4 +1,4 @@
-local defaultColor = "carbonfox"
+local defaultColor = "tokyonight-night"
 
 local currentColor = defaultColor
 function ColorMyPencils(color)
