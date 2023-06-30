@@ -2,10 +2,8 @@ name: PR Comment
 
 # Hello, GH Actions
 
-on:
-  issue_comment:
-    types: [created]
-
+on: pull_request_target
+  
 jobs:
   echo_sha:
     runs-on: ubuntu-latest
