@@ -1,0 +1,12 @@
+name: PR Comment
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  echo_sha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Sha
+        run: echo "$GITHUB_SHA"
