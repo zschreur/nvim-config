@@ -1,5 +1,7 @@
 name: PR Comment
 
+# Hello, GH Actions
+
 on:
   issue_comment:
     types: [created]
