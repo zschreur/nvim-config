@@ -2,9 +2,7 @@ name: PR Comment
 
 # Hello, GH Actions
 
-on:
-  pull_request_target:
-    types: [labeled]
+on: issue_comment
 
 jobs:
   echo_sha:
