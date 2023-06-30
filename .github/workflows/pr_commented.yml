@@ -1,0 +1,12 @@
+name: PR Comment
+
+# Hello, GH Actions
+
+on: workflow_dispatch
+
+jobs:
+  echo_sha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Sha
+        run: env
