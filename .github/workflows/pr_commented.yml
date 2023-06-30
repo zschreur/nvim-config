@@ -2,8 +2,10 @@ name: PR Comment
 
 # Hello, GH Actions
 
-on: pull_request_target
-  
+on:
+  pull_request_target:
+    types: [labeled]
+
 jobs:
   echo_sha:
     runs-on: ubuntu-latest
