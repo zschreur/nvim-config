@@ -75,5 +75,5 @@ return packer.startup(function(use)
    -- use 'christoomey/vim-tmux-navigator'
 
    -- CoPilot
-   -- use "github/copilot.vim"
+   use "github/copilot.vim"
 end)
