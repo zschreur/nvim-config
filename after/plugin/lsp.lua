@@ -16,18 +16,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<leader>f", function()
-        -- Skip tsserver auto format
-        if client.name ~= "tsserver" and client.name ~= "eslint" then
-            vim.lsp.buf.format({
-               insertSpaces = true,
-               insertFinalNewline = true,
-               trimFinalNewlines = true
-            })
-        elseif client.name == "eslint" then
-           vim.cmd("EslintFixAll");
-        end
-    end, bufopts)
+    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
 
     -- highligh on cursor hold
@@ -44,7 +33,19 @@ require "lspconfig".eslint.setup {
     on_attach = on_attach
 }
 require "lspconfig".tsserver.setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    on_init = function(client)
+      client.notify("workspace/didChangeConfiguration", {
+         settings = {
+            typescript = {
+               format = {
+                  insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = false,
+                  semicolons = "insert",
+               }
+            }
+         }
+      })
+   end
 }
 require "lspconfig".rust_analyzer.setup {
     on_attach = on_attach
