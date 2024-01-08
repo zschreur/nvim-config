@@ -40,7 +40,6 @@ require "lspconfig".tsserver.setup {
             typescript = {
                format = {
                   insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces = false,
-                  semicolons = "insert",
                }
             }
          }
