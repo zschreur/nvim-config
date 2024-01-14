@@ -24,7 +24,13 @@ return packer.startup(function(use)
 
    use {
       "nvim-telescope/telescope.nvim", tag = "0.1.5",
-      requires = { { "nvim-lua/plenary.nvim" } }
+      requires = {
+         { "nvim-lua/plenary.nvim" },
+         {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+         }
+      }
    }
 
    use { "rose-pine/neovim", as = "rose-pine" }
@@ -47,14 +53,14 @@ return packer.startup(function(use)
 
    -- snippets
    use "saadparwaiz1/cmp_luasnip"
-   use "L3MON4D3/LuaSnip" -- snippet engine
+   use "L3MON4D3/LuaSnip"             -- snippet engine
    use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
    -- cmp
-   use "hrsh7th/nvim-cmp" -- completion plugin
-   use "hrsh7th/cmp-buffer" -- buffer completions
-   use "hrsh7th/cmp-path" -- path completions
-   use "hrsh7th/cmp-cmdline" -- nippet completions
+   use "hrsh7th/nvim-cmp"     -- completion plugin
+   use "hrsh7th/cmp-buffer"   -- buffer completions
+   use "hrsh7th/cmp-path"     -- path completions
+   use "hrsh7th/cmp-cmdline"  -- nippet completions
    use "hrsh7th/cmp-nvim-lsp" -- lsp completions
    use "hrsh7th/cmp-nvim-lua" -- lua completions
 
