@@ -18,7 +18,7 @@ local options = {
 	swapfile = false,                        -- creates a swapfile
 
 	undofile = true,                         -- enable persistent undo
-	undodir = os.getenv('HOME') .. '/.vim/undodir', -- creates a swapfile
+    undodir = vim.fn.stdpath('data') .. '/undodir',
 
 	updatetime = 50,                         -- faster completion (4000ms default)
 	writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited

@@ -81,4 +81,12 @@ local plugins = {
 
 local opts = {}
 
-require("lazy").setup(plugins, opts)
+require'lazy'.setup(plugins, opts)
+require'config.cmp'
+require'config.fugitive'
+require'config.lsp'
+require'config.lualine'
+require'config.tabline'
+require'config.telescope'
+require'config.treesitter'
+require'config.undotree'
