@@ -37,7 +37,7 @@ local plugins = {
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             -- load the colorscheme here
-            ColorMyPencils("tokyonight-night")
+            ColorMyPencils(currentColor)
         end,
     },
     "EdenEast/nightfox.nvim",
