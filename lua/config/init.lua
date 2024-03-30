@@ -41,12 +41,7 @@ local plugins = {
         end,
     },
     "EdenEast/nightfox.nvim",
-    {
-        "nvim-treesitter/nvim-treesitter",
-        config = function()
-            vim.cmd([[TSUpdate]])
-        end,
-    },
+    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.5",

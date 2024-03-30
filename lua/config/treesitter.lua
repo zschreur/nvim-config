@@ -3,14 +3,15 @@ require 'nvim-treesitter.configs'.setup {
     ensure_installed = {
         'c',
         'cpp',
-        'lua',
-        'vim',
         'rust',
         'typescript',
         'javascript',
         'tsx',
         'yaml',
-        'html'
+        'html',
+        'lua',
+        'vim',
+        'vimdoc'
     },
 
     modules = {},
@@ -32,4 +33,7 @@ require 'nvim-treesitter.configs'.setup {
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
     },
+    indent = {
+        enable = true,
+    }
 }
