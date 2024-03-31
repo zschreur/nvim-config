@@ -33,7 +33,8 @@ local jj_files = function(opts)
         finder = finders.new_table {
             results = utils.get_os_command_output({ "jj", "files", "--no-pager" }, opts.cwd),
         },
-        sorter = conf.generic_sorter(opts),
+        previewer = conf.file_previewer(opts),
+        sorter = conf.file_sorter(opts),
     }):find()
 end
 
