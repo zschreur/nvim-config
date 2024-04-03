@@ -12,7 +12,7 @@ local set_opts_cwd = function(opts)
     end
 
     -- Find root of git directory and remove trailing newline characters
-    local jj_root, ret = utils.get_os_command_output({ "jj", "workspace", "root" }, opts.cwd)
+    local jj_root, ret = utils.get_os_command_output({ "jj", "root" }, opts.cwd)
     local use_git_root = vim.F.if_nil(opts.use_git_root, true)
 
     if ret == 0 and use_git_root then
@@ -21,8 +21,8 @@ local set_opts_cwd = function(opts)
 end
 
 local is_jj_repo = function()
-    local in_jj = utils.get_os_command_output({ "jj", "log", "-T", "true", "--no-pager", "--no-graph", "-r", "@" })
-    return in_jj[1] == "true"
+    local _, ret = utils.get_os_command_output({ "jj", "root" })
+    return ret == 0
 end
 
 local jj_files = function(opts)
@@ -40,9 +40,12 @@ end
 
 local vcs_picker = function(opts)
     if is_jj_repo() then
-        jj_files(opts)
-    else
-        builtin.git_files(opts)
+        return jj_files(opts)
+    end
+    local status, res = pcall(builtin.git_files, opts);
+
+    if not status then
+        print(res)
     end
 end
 
