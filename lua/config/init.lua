@@ -76,6 +76,8 @@ local plugins = {
 
     -- CoPilot
     "github/copilot.vim",
+
+    "zschreur/jj_telescope",
 }
 
 local opts = {}
