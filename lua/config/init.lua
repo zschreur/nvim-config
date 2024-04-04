@@ -78,6 +78,7 @@ local plugins = {
     "github/copilot.vim",
 
     "zschreur/jj_telescope",
+    "avm99963/vim-jjdescription"
 }
 
 local opts = {}
