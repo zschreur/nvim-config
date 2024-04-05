@@ -1,15 +1,15 @@
-local telescope = require "telescope"
-local builtin = require "telescope.builtin"
+local builtin = require("telescope.builtin")
+local telescope = require("telescope")
 
-telescope.load_extension('jj')
+telescope.load_extension("jj")
 
 local vcs_picker = function(opts)
-    local jj_pick_status, jj_res = pcall(telescope.extensions.jj.files, opts);
+    local jj_pick_status, jj_res = pcall(telescope.extensions.jj.files, opts)
     if jj_pick_status then
         return
     end
 
-    local git_files_status, git_res = pcall(builtin.git_files, opts);
+    local git_files_status, git_res = pcall(builtin.git_files, opts)
     if not git_files_status then
         print(jj_res)
         print(git_res)

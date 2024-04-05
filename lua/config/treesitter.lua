@@ -1,17 +1,17 @@
-require 'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
     -- A list of parser names, or 'all'
     ensure_installed = {
-        'c',
-        'cpp',
-        'rust',
-        'typescript',
-        'javascript',
-        'tsx',
-        'yaml',
-        'html',
-        'lua',
-        'vim',
-        'vimdoc'
+        "c",
+        "cpp",
+        "rust",
+        "typescript",
+        "javascript",
+        "tsx",
+        "yaml",
+        "html",
+        "lua",
+        "vim",
+        "vimdoc",
     },
 
     modules = {},
@@ -35,5 +35,5 @@ require 'nvim-treesitter.configs'.setup {
     },
     indent = {
         enable = true,
-    }
-}
+    },
+})
