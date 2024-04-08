@@ -16,7 +16,13 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
+    vim.keymap.set("n", "<leader>f", function()
+        if client.name == "lua_ls" then
+            require("stylua-nvim").format_file()
+        else
+            vim.lsp.buf.format()
+        end
+    end, bufopts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
 
     -- highligh on cursor hold
@@ -51,6 +57,13 @@ require("lspconfig").rust_analyzer.setup({
 })
 require("lspconfig").lua_ls.setup({
     on_attach = on_attach,
+    commands = {
+        Format = {
+            function()
+                require("stylua-nvim").format_file()
+            end,
+        },
+    },
     settings = {
         Lua = {
             runtime = {

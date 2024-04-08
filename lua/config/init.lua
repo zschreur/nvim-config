@@ -71,6 +71,8 @@ local plugins = {
     -- lsp
     "neovim/nvim-lspconfig",
 
+    "ckipp01/stylua-nvim",
+
     -- tmux + vim navigation
     -- use 'christoomey/vim-tmux-navigator'
 
