@@ -79,7 +79,7 @@ local plugins = {
     -- CoPilot
     "github/copilot.vim",
 
-    "zschreur/jj_telescope",
+    "zschreur/telescope-jj.nvim",
     "avm99963/vim-jjdescription",
 }
 
