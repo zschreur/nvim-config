@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local currentColor = "tokyonight-night"
+local currentColor = "dawnfox"
 local isTransparent = true
 
 function ColorMyPencils(color)
