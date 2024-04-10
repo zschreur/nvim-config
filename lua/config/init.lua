@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local currentColor = "dawnfox"
+local currentColor = "base16-tomorrow"
 local isTransparent = true
 
 function ColorMyPencils(color)
@@ -41,6 +41,8 @@ local plugins = {
         end,
     },
     "EdenEast/nightfox.nvim",
+    "chriskempson/base16-vim",
+
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     {
         "nvim-telescope/telescope.nvim",
