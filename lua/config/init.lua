@@ -83,6 +83,10 @@ local plugins = {
 
     "zschreur/telescope-jj.nvim",
     "avm99963/vim-jjdescription",
+
+    -- just support
+    "NoahTheDuke/vim-just",
+    "IndianBoy42/tree-sitter-just",
 }
 
 local opts = {}
