@@ -80,9 +80,6 @@ local plugins = {
     -- tmux + vim navigation
     -- { 'christoomey/vim-tmux-navigator', lazy = true },
 
-    -- CoPilot
-    { "github/copilot.vim", lazy = true },
-
     { "zschreur/telescope-jj.nvim", lazy = true },
     { "avm99963/vim-jjdescription", lazy = true },
 
