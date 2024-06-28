@@ -29,6 +29,8 @@ curl -R -O https://luarocks.github.io/luarocks/releases/luarocks-3.11.1.tar.gz
 tar -xzf luarocks-3.11.1.tar.gz
 
 # Run make
+cd ./luarocks-3.11.1
+./configure --with-lua-include=/usr/local/include
 make
 sudo make install
 
