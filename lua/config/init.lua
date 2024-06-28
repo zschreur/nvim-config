@@ -77,9 +77,6 @@ local plugins = {
 
     { "ckipp01/stylua-nvim", lazy = true },
 
-    -- tmux + vim navigation
-    -- { 'christoomey/vim-tmux-navigator', lazy = true },
-
     { "zschreur/telescope-jj.nvim", lazy = true },
     { "avm99963/vim-jjdescription", lazy = true },
 
