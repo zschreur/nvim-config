@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local currentColor = "base16-tomorrow"
+local currentColor = "tokyonight"
 local isTransparent = true
 
 function ColorMyPencils(color)
@@ -40,13 +40,14 @@ local plugins = {
             ColorMyPencils(currentColor)
         end,
     },
-    "EdenEast/nightfox.nvim",
-    "chriskempson/base16-vim",
+    { "EdenEast/nightfox.nvim", lazy = true },
+    { "chriskempson/base16-vim", lazy = true },
 
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = true },
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
+        branch = "0.1.x",
+        lazy = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "BurntSushi/ripgrep",
@@ -56,38 +57,38 @@ local plugins = {
             },
         },
     },
-    "nvim-lualine/lualine.nvim",
-    "mbbill/undotree",
-    "tpope/vim-fugitive",
-    "ryanoasis/vim-devicons",
-    "saadparwaiz1/cmp_luasnip",
-    "L3MON4D3/LuaSnip",
-    "rafamadriz/friendly-snippets",
+    { "nvim-lualine/lualine.nvim", lazy = true },
+    { "mbbill/undotree", lazy = true },
+    { "tpope/vim-fugitive", lazy = true },
+    { "ryanoasis/vim-devicons", lazy = true },
+    { "saadparwaiz1/cmp_luasnip", lazy = true },
+    { "L3MON4D3/LuaSnip", lazy = true },
+    { "rafamadriz/friendly-snippets", lazy = true },
 
-    "hrsh7th/nvim-cmp", -- completion plugin
-    "hrsh7th/cmp-buffer", -- buffer completions
-    "hrsh7th/cmp-path", -- path completions
-    "hrsh7th/cmp-cmdline", -- nippet completions
-    "hrsh7th/cmp-nvim-lsp", -- lsp completions
-    "hrsh7th/cmp-nvim-lua", -- lua completions
+    { "hrsh7th/nvim-cmp", lazy = true }, -- completion plugin
+    { "hrsh7th/cmp-buffer", lazy = true }, -- buffer completions
+    { "hrsh7th/cmp-path", lazy = true }, -- path completions
+    { "hrsh7th/cmp-cmdline", lazy = true }, -- nippet completions
+    { "hrsh7th/cmp-nvim-lsp", lazy = true }, -- lsp completions
+    { "hrsh7th/cmp-nvim-lua", lazy = true }, -- lua completions
 
     -- lsp
-    "neovim/nvim-lspconfig",
+    { "neovim/nvim-lspconfig", lazy = true },
 
-    "ckipp01/stylua-nvim",
+    { "ckipp01/stylua-nvim", lazy = true },
 
     -- tmux + vim navigation
-    -- use 'christoomey/vim-tmux-navigator'
+    -- { 'christoomey/vim-tmux-navigator', lazy = true },
 
     -- CoPilot
-    "github/copilot.vim",
+    { "github/copilot.vim", lazy = true },
 
-    "zschreur/telescope-jj.nvim",
-    "avm99963/vim-jjdescription",
+    { "zschreur/telescope-jj.nvim", lazy = true },
+    { "avm99963/vim-jjdescription", lazy = true },
 
     -- just support
-    "NoahTheDuke/vim-just",
-    "IndianBoy42/tree-sitter-just",
+    { "NoahTheDuke/vim-just", lazy = true },
+    { "IndianBoy42/tree-sitter-just", lazy = true },
 }
 
 local opts = {}
