@@ -65,12 +65,12 @@ local plugins = {
     { "L3MON4D3/LuaSnip", lazy = true },
     { "rafamadriz/friendly-snippets", lazy = true },
 
-    { "hrsh7th/nvim-cmp", lazy = true }, -- completion plugin
-    { "hrsh7th/cmp-buffer", lazy = true }, -- buffer completions
-    { "hrsh7th/cmp-path", lazy = true }, -- path completions
-    { "hrsh7th/cmp-cmdline", lazy = true }, -- nippet completions
-    { "hrsh7th/cmp-nvim-lsp", lazy = true }, -- lsp completions
-    { "hrsh7th/cmp-nvim-lua", lazy = true }, -- lua completions
+    "hrsh7th/nvim-cmp", -- completion plugin
+    "hrsh7th/cmp-buffer", -- buffer completions
+    "hrsh7th/cmp-path", -- path completions
+    "hrsh7th/cmp-cmdline", -- snippet completions
+    "hrsh7th/cmp-nvim-lsp", -- lsp completions
+    "hrsh7th/cmp-nvim-lua", -- lua completions
 
     -- lsp
     { "neovim/nvim-lspconfig", lazy = true },
