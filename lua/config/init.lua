@@ -43,11 +43,10 @@ local plugins = {
     { "EdenEast/nightfox.nvim", lazy = true },
     { "chriskempson/base16-vim", lazy = true },
 
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = true },
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        lazy = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "BurntSushi/ripgrep",
@@ -57,13 +56,13 @@ local plugins = {
             },
         },
     },
-    { "nvim-lualine/lualine.nvim", lazy = true },
-    { "mbbill/undotree", lazy = true },
-    { "tpope/vim-fugitive", lazy = true },
-    { "ryanoasis/vim-devicons", lazy = true },
-    { "saadparwaiz1/cmp_luasnip", lazy = true },
-    { "L3MON4D3/LuaSnip", lazy = true },
-    { "rafamadriz/friendly-snippets", lazy = true },
+    "nvim-lualine/lualine.nvim",
+    "mbbill/undotree",
+    "tpope/vim-fugitive",
+    "ryanoasis/vim-devicons",
+    "saadparwaiz1/cmp_luasnip",
+    "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
 
     "hrsh7th/nvim-cmp", -- completion plugin
     "hrsh7th/cmp-buffer", -- buffer completions
@@ -73,16 +72,16 @@ local plugins = {
     "hrsh7th/cmp-nvim-lua", -- lua completions
 
     -- lsp
-    { "neovim/nvim-lspconfig", lazy = true },
+    "neovim/nvim-lspconfig",
 
-    { "ckipp01/stylua-nvim", lazy = true },
+    "ckipp01/stylua-nvim",
 
-    { "zschreur/telescope-jj.nvim", lazy = true },
-    { "avm99963/vim-jjdescription", lazy = true },
+    "zschreur/telescope-jj.nvim",
+    "avm99963/vim-jjdescription",
 
     -- just support
-    { "NoahTheDuke/vim-just", lazy = true },
-    { "IndianBoy42/tree-sitter-just", lazy = true },
+    "NoahTheDuke/vim-just",
+    "IndianBoy42/tree-sitter-just",
 }
 
 local opts = {}
