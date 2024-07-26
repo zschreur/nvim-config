@@ -79,6 +79,13 @@ local plugins = {
 
     { "zschreur/telescope-jj.nvim", lazy = true },
     { "avm99963/vim-jjdescription", lazy = true },
+    {
+        "julienvincent/hunk.nvim",
+        cmd = { "DiffEditor" },
+        config = function()
+            require("hunk").setup()
+        end,
+    },
 
     -- just support
     { "NoahTheDuke/vim-just", lazy = true },
