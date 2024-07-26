@@ -85,3 +85,6 @@ require("lspconfig").lua_ls.setup({
         },
     },
 })
+require("lspconfig").zls.setup({
+    on_attach = on_attach,
+})
