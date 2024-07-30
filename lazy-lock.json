@@ -18,7 +18,7 @@
   "ripgrep": { "branch": "master", "commit": "71d71d2d98964653cdfcfa315802f518664759d7" },
   "stylua-nvim": { "branch": "main", "commit": "ce59a353f02938cba3e0285e662fcd3901cd270f" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
-  "telescope-jj.nvim": { "branch": "main", "commit": "8fcd98839fedbbc2c96d971bf619ffa3bea31ee9" },
+  "telescope-jj.nvim": { "branch": "main", "commit": "73e7682ffcd5c3c37a15f92d5a6a2a9709b42802" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "tokyonight.nvim": { "branch": "main", "commit": "6adfcde66e8af2f22dd5d76060980abd8daa0df8" },
   "tree-sitter-just": { "branch": "main", "commit": "379fbe36d1e441bc9414ea050ad0c85c9d6935ea" },
