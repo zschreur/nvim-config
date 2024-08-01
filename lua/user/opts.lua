@@ -43,6 +43,7 @@ vim.opt.shortmess:append("c")
 vim.keymap.set("", "<space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.zig_fmt_autosave = false
 
 for k, v in pairs(options) do
     vim.opt[k] = v
